@@ -256,14 +256,14 @@ function calculate(numbers, operation){
 
 function handleSet(text){
     const arr = text.replace(/\/set\s*:?\s*/i, '').trim();
-    const parts = arr.split(/\s*=?\s*/).filter(Boolean);
+    const parts = arr.split(/\s*=\s*|\s+/).filter(Boolean);
     if (parts.length < 2 ){
         addMessage(errSetForm, 'bot')
         return;
     }
     const name = parts[0];
     const num = Number(parts[1]);
-    if (!/^[A-Za-zА-Яа-я_][w\А-Яа-я]*$/.test(name)){
+    if (!/^[A-Za-zА-Яа-я_][\wА-Яа-я]*$/.test(name)){
         addMessage(errSetForm, 'bot');
         return;
     }
